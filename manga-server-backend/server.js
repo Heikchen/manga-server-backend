@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const app = express();
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const port = 7020;
+const port = process.env.PORT || 3000;
 
 app.use(
   cors({
@@ -15,7 +15,6 @@ app.use(
 app.use(morgan("dev"));
 app.use(express.json());
 
-const HOST = "localhost";
 let API_BASE_URL = "https://api.myanimelist.net/v2/";
 app.use(
   "/:info",
@@ -32,10 +31,10 @@ app.use(
   })
 );
 
-app.listen(port, HOST, (err) => {
+app.listen(port, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(`Example app listening on port ${HOST}:${port}`);
+    console.log(`Example app listening on port ${port}`);
   }
 });
