@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const app = express();
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
@@ -31,10 +31,10 @@ app.use(
   })
 );
 
-app.listen(port, (err) => {
+app.listen(PORT, (err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${PORT}`);
   }
 });
